@@ -19,7 +19,21 @@ protected:
 	string excercise_wl[10]{};
 
 public:
-	workout_log(){}
+	workout_log()
+	{
+		ifstream fin;
+		fin.open("workout_logs.txt", ios::in);
+		fin.seekg(0, ios::beg);
+		fin >> ::count_wl;
+		for (int i = 0; i < ::count_wl; i++) {
+			fin >> excercise_wl[i];
+			fin >> steps_wl[i];
+			fin >> calories_wl[i];
+			fin >> distance_wl[i];
+			fin >> bpm_wl[i];
+		}
+		fin.close();
+	}
 
 	void wl_entry()
 	{
@@ -66,7 +80,7 @@ public:
 		fout.close();
 	}
 
-	void file_read()
+	/*void file_read()
 	{
 		ifstream fin;
 		fin.open("workout_logs.txt", ios::in);
@@ -80,7 +94,7 @@ public:
 			fin >> bpm_wl[i];
 		}
 		fin.close();
-	}
+	}*/
 };
 
 class food_log
@@ -231,7 +245,7 @@ int main()
 			break;
 
 		case 6:
-			U1.file_read();
+			//U1.file_read();
 			break;
 
 		default:
