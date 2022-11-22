@@ -2,6 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include <string>
+#include<fstream>
 #include <stdlib.h>
 int count_wl = 0;
 int count_fl = 0;
@@ -41,13 +42,44 @@ public:
 	void wl_view()
 	{
 		cout << "Workout Logs" << endl;
-		for (int i = 0; i <::count_wl; i++) {
+		for (int i = 0; i < 2; i++) {
 			cout << "Excercise: " << excercise_wl[i] << endl;
 			cout << "Steps: " << steps_wl[i] << endl;
 			cout << "Calories: " << calories_wl[i] << endl;
 			cout << "Distance: " << distance_wl[i] << endl;
 			cout << "Average Heart rate: " << bpm_wl[i] << endl;
 		}
+	}
+
+	void file_write()
+	{
+		ofstream fout;
+		fout.open("workout_logs.txt", ios::out);
+		//fout << ::count_wl << endl;
+		for (int i = 0; i < 2; i++) {
+			fout << excercise_wl[i] << endl;
+			fout << steps_wl[i] << endl;
+			fout << calories_wl[i] << endl;
+			fout << distance_wl[i] << endl;
+			fout << bpm_wl[i] << endl;
+		}
+		fout.close();
+	}
+
+	void file_read()
+	{
+		ifstream fin;
+		fin.open("workout_log.txt", ios::in);
+		fin.seekg(0, ios::beg);
+		//fin >> ::count_wl;
+		for (int i = 0; i < 2; i++) {
+			fin >> excercise_wl[i];
+			fin >> steps_wl[i];
+			fin >> calories_wl[i];
+			fin >> distance_wl[i];
+			fin >> bpm_wl[i];
+		}
+		fin.close();
 	}
 };
 
@@ -192,6 +224,14 @@ int main()
 
 		case 4:
 			U1.user_view();
+			break;
+
+		case 5:
+			U1.file_write();
+			break;
+
+		case 6:
+			U1.file_read();
 			break;
 
 		default:
