@@ -42,7 +42,7 @@ public:
 	void wl_view()
 	{
 		cout << "Workout Logs" << endl;
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < ::count_wl; i++) {
 			cout << "Excercise: " << excercise_wl[i] << endl;
 			cout << "Steps: " << steps_wl[i] << endl;
 			cout << "Calories: " << calories_wl[i] << endl;
@@ -55,8 +55,8 @@ public:
 	{
 		ofstream fout;
 		fout.open("workout_logs.txt", ios::out);
-		//fout << ::count_wl << endl;
-		for (int i = 0; i < 2; i++) {
+		fout << ::count_wl << endl;
+		for (int i = 0; i < ::count_wl; i++) {
 			fout << excercise_wl[i] << endl;
 			fout << steps_wl[i] << endl;
 			fout << calories_wl[i] << endl;
@@ -69,10 +69,10 @@ public:
 	void file_read()
 	{
 		ifstream fin;
-		fin.open("workout_log.txt", ios::in);
+		fin.open("workout_logs.txt", ios::in);
 		fin.seekg(0, ios::beg);
-		//fin >> ::count_wl;
-		for (int i = 0; i < 2; i++) {
+		fin >> ::count_wl;
+		for (int i = 0; i < ::count_wl; i++) {
 			fin >> excercise_wl[i];
 			fin >> steps_wl[i];
 			fin >> calories_wl[i];
