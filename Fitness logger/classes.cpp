@@ -65,8 +65,8 @@ public:
 		}
 	}
 
-	void file_write_wl()
-	{
+	friend void file_write_wl(workout_log &W);
+	/*{
 		ofstream fout_wl;
 		fout_wl.open("workout_logs.txt", ios::out);
 		fout_wl << ::count_wl << endl;
@@ -78,7 +78,7 @@ public:
 			fout_wl << bpm_wl[i] << endl;
 		}
 		fout_wl.close();
-	}
+	}*/
 
 	/*void file_read()
 	{
@@ -96,6 +96,21 @@ public:
 		fin.close();
 	}*/
 };
+
+void file_write_wl(workout_log &W)
+{
+	ofstream fout_wl;
+	fout_wl.open("workout_logs.txt", ios::out);
+	fout_wl << ::count_wl << endl;
+	for (int i = 0; i < ::count_wl; i++) {
+		fout_wl << W.excercise_wl[i] << endl;
+		fout_wl << W.steps_wl[i] << endl;
+		fout_wl << W.calories_wl[i] << endl;
+		fout_wl << W.distance_wl[i] << endl;
+		fout_wl << W.bpm_wl[i] << endl;
+	}
+	fout_wl.close();
+}
 
 class food_log
 {
@@ -138,8 +153,8 @@ public:
 		}
 	}
 
-	void file_write_fl ()
-	{
+	friend void file_write_fl(food_log &F);
+	/*{
 		ofstream fout_fl;
 		fout_fl.open("food_logs.txt", ios::in);
 		fout_fl << count_fl << endl;
@@ -148,10 +163,21 @@ public:
 			fout_fl << calories_fl[i] << endl;
 		}
 		fout_fl.close();
-
-	}
+	}*/
 
 };
+
+void file_write_fl(food_log &F)
+{
+	ofstream fout_fl;
+	fout_fl.open("food_logs.txt", ios::in);
+	fout_fl << count_fl << endl;
+	for (int i = 0; i < count_fl; i++) {
+		fout_fl << F.type_fl[i] << endl;
+		fout_fl << F.calories_fl[i] << endl;
+	}
+	fout_fl.close();
+}
 
 class lifetime : public workout_log, public food_log
 {
@@ -189,16 +215,26 @@ public:
 		cout << "Total Distance Travelled: " << distance_lt << endl;
 	}
 
-	void file_write_lt()
-	{
+	friend void file_write_lt(lifetime &L);
+	/*{
 		ofstream fout_lt;
 		fout_lt.open("lifetime.txt", ios::in);
 		fout_lt << steps_lt << endl;
 		fout_lt << calories_lt << endl;
 		fout_lt << distance_lt << endl;
 		fout_lt.close();
-	}
+	}*/
 };
+
+void file_write_lt(lifetime &L)
+{
+	ofstream fout_lt;
+	fout_lt.open("lifetime.txt", ios::in);
+	fout_lt << L.steps_lt << endl;
+	fout_lt << L.calories_lt << endl;
+	fout_lt << L.distance_lt << endl;
+	fout_lt.close();
+}
 
 class user : public lifetime
 {
@@ -262,8 +298,8 @@ public:
 		cout << "BMI: " << BMI << endl;
 	}
 
-	void file_write_user()
-	{
+	friend void file_write_user(user &U);
+	/*{
 		ofstream fout_u;
 		fout_u.open("user_details.txt", ios::out);
 		fout_u << ID << endl;
@@ -274,8 +310,22 @@ public:
 		fout_u << blood_grp << endl;
 		fout_u << BMI << endl;
 		fout_u.close();
-	}
+	}*/
 };
+
+void file_write_user(user &U)
+{
+	ofstream fout_u;
+	fout_u.open("user_details.txt", ios::out);
+	fout_u << U.ID << endl;
+	fout_u << U.name << endl;
+	fout_u << U.age << endl;
+	fout_u << U.height << endl;
+	fout_u << U.weight << endl;
+	fout_u << U.blood_grp << endl;
+	fout_u << U.BMI << endl;
+	fout_u.close();
+}
 
 void menu_main();
 void menu_wl(user& U1)
@@ -308,6 +358,7 @@ void menu_wl(user& U1)
 		break;
 
 	case 5:
+		file_write_wl(U1);
 		menu_main();
 		break;
 
@@ -347,6 +398,7 @@ void menu_fl(user& U1)
 		break;
 
 	case 5:
+		file_write_fl(U1);
 		menu_main();
 		break;
 
@@ -378,6 +430,7 @@ void menu_lt(user& U1)
 		break;
 
 	case 3:
+		file_write_lt(U1);
 		menu_main();
 		break;
 
@@ -418,6 +471,7 @@ void menu_user(user &U1)
 		break;
 
 	case 5:
+		file_write_user(U1);
 		menu_main();
 		break;
 
@@ -464,11 +518,7 @@ void menu_main()
 			break;
 
 		case 5:
-			U1.file_write_wl();
-			U1.file_write_fl();
-			U1.file_write_lt();
-			U1.file_write_user();
-			//exit(1);
+			exit(1);
 			break;
 
 		default:
