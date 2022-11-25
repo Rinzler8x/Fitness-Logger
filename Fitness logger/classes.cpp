@@ -65,7 +65,7 @@ public:
 		}
 	}
 
-	friend void file_write_wl(workout_log &W);
+	friend void file_write_wl(workout_log &);
 };
 
 void file_write_wl(workout_log &W)
@@ -124,7 +124,7 @@ public:
 		}
 	}
 
-	friend void file_write_fl(food_log &F);
+	friend void file_write_fl(food_log &);
 };
 
 void file_write_fl(food_log &F)
@@ -175,7 +175,7 @@ public:
 		cout << "Total Distance Travelled: " << distance_lt << endl;
 	}
 
-	friend void file_write_lt(lifetime &L);
+	friend void file_write_lt(lifetime &);
 };
 
 void file_write_lt(lifetime &L)
@@ -250,7 +250,7 @@ public:
 		cout << "BMI: " << BMI << endl;
 	}
 
-	friend void file_write_user(user &U);
+	friend void file_write_user(user &);
 };
 
 void file_write_user(user &U)
@@ -268,8 +268,9 @@ void file_write_user(user &U)
 }
 
 void menu_main();
-void menu_wl(user& U1)
+void menu_wl(user &U1)
 {
+
 	system("cls");
 	int cho;
 	cout << "Workout Log Menu" << endl;
@@ -308,7 +309,7 @@ void menu_wl(user& U1)
 	}
 }
 
-void menu_fl(user& U1)
+void menu_fl(user &U1)
 {
 	system("cls");
 	int cho;
@@ -348,7 +349,7 @@ void menu_fl(user& U1)
 	}
 }
 
-void menu_lt(user& U1)
+void menu_lt(user &U1)
 {
 	system("cls");
 	int cho;
@@ -432,40 +433,35 @@ void menu_main()
 	cout << "3. Life Time Records" << endl;
 	cout << "4. User Details" << endl;
 	cout << "5. Exit" << endl;
+	cout << "Enter your choice: ";
+	cin >> cho;
 
-	do
+	switch (cho)
 	{
-		cout << "Enter your choice: ";
-		cin >> cho;
-		cout << endl;
+	case 1:
+		menu_wl(U1);
+		break;
 
-		switch (cho)
-		{
-		case 1:
-			menu_wl(U1);
-			break;
+	case 2:
+		menu_fl(U1);
+		break;
 
-		case 2:
-			menu_fl(U1);
-			break;
+	case 3:
+		menu_lt(U1);
+		break;
 
-		case 3:
-			menu_lt(U1);
-			break;
+	case 4:
+		menu_user(U1);
+		break;
 
-		case 4:
-			menu_user(U1);
-			break;
+	case 5:
+		exit(1);
+		break;
 
-		case 5:
-			exit(1);
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			break;
-		}
-	} while (cho != 0);
+	default:
+		cout << "Invalid Input" << endl;
+		break;
+	}
 }
 
 
