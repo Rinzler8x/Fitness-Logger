@@ -9,7 +9,6 @@ int count_fl = 0;
 
 using namespace std;
 
-//test 
 class workout_log
 {
 protected:
@@ -67,35 +66,6 @@ public:
 	}
 
 	friend void file_write_wl(workout_log &W);
-	/*{
-		ofstream fout_wl;
-		fout_wl.open("workout_logs.txt", ios::out);
-		fout_wl << ::count_wl << endl;
-		for (int i = 0; i < ::count_wl; i++) {
-			fout_wl << excercise_wl[i] << endl;
-			fout_wl << steps_wl[i] << endl;
-			fout_wl << calories_wl[i] << endl;
-			fout_wl << distance_wl[i] << endl;
-			fout_wl << bpm_wl[i] << endl;
-		}
-		fout_wl.close();
-	}*/
-
-	/*void file_read()
-	{
-		ifstream fin;
-		fin.open("workout_logs.txt", ios::in);
-		fin.seekg(0, ios::beg);
-		fin >> ::count_wl;
-		for (int i = 0; i < ::count_wl; i++) {
-			fin >> excercise_wl[i];
-			fin >> steps_wl[i];
-			fin >> calories_wl[i];
-			fin >> distance_wl[i];
-			fin >> bpm_wl[i];
-		}
-		fin.close();
-	}*/
 };
 
 void file_write_wl(workout_log &W)
@@ -155,17 +125,6 @@ public:
 	}
 
 	friend void file_write_fl(food_log &F);
-	/*{
-		ofstream fout_fl;
-		fout_fl.open("food_logs.txt", ios::in);
-		fout_fl << count_fl << endl;
-		for (int i = 0; i < count_fl; i++) {
-			fout_fl << type_fl[i] << endl;
-			fout_fl << calories_fl[i] << endl;
-		}
-		fout_fl.close();
-	}*/
-
 };
 
 void file_write_fl(food_log &F)
@@ -217,14 +176,6 @@ public:
 	}
 
 	friend void file_write_lt(lifetime &L);
-	/*{
-		ofstream fout_lt;
-		fout_lt.open("lifetime.txt", ios::in);
-		fout_lt << steps_lt << endl;
-		fout_lt << calories_lt << endl;
-		fout_lt << distance_lt << endl;
-		fout_lt.close();
-	}*/
 };
 
 void file_write_lt(lifetime &L)
@@ -300,18 +251,6 @@ public:
 	}
 
 	friend void file_write_user(user &U);
-	/*{
-		ofstream fout_u;
-		fout_u.open("user_details.txt", ios::out);
-		fout_u << ID << endl;
-		fout_u << name << endl;
-		fout_u << age << endl;
-		fout_u << height << endl;
-		fout_u << weight << endl;
-		fout_u << blood_grp << endl;
-		fout_u << BMI << endl;
-		fout_u.close();
-	}*/
 };
 
 void file_write_user(user &U)
@@ -533,48 +472,5 @@ void menu_main()
 int main()
 {
 	menu_main();
-	/*user U1;
-	int cho;
-	cout << "Menu" << endl;
-	cout << "Workout Log entry" << endl;
-	cout << "Display" << endl;
-	cout << "User entry" << endl;
-	cout << "User display" << endl;
-
-	do
-	{
-		cout << "Enter your choice: ";
-		cin >> cho;
-		cout << endl;
-
-		switch (cho)
-		{
-		case 1:
-			menu_wl();
-			break;
-
-		case 2:
-			menu_fl();
-			break;
-
-		case 3:
-			menu_lt();
-			break;
-
-		case 4:
-			menu_user();
-			break;
-
-		case 5:
-			U1.file_write_wl();
-			U1.file_write_fl();
-			U1.file_write_lt();
-			U1.file_write_user();
-			break;
-
-		default:
-			break;
-		}
-	} while (cho != 0);*/
 	return 0;
 }
