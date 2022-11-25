@@ -65,7 +65,7 @@ public:
 		}
 	}
 
-	friend void file_write_wl(workout_log &W);
+	friend void file_write_wl(workout_log &);
 };
 
 void file_write_wl(workout_log &W)
@@ -124,7 +124,7 @@ public:
 		}
 	}
 
-	friend void file_write_fl(food_log &F);
+	friend void file_write_fl(food_log &);
 };
 
 void file_write_fl(food_log &F)
@@ -175,7 +175,7 @@ public:
 		cout << "Total Distance Travelled: " << distance_lt << endl;
 	}
 
-	friend void file_write_lt(lifetime &L);
+	friend void file_write_lt(lifetime &);
 };
 
 void file_write_lt(lifetime &L)
@@ -250,7 +250,7 @@ public:
 		cout << "BMI: " << BMI << endl;
 	}
 
-	friend void file_write_user(user &U);
+	friend void file_write_user(user &);
 };
 
 void file_write_user(user &U)
@@ -268,157 +268,186 @@ void file_write_user(user &U)
 }
 
 void menu_main();
-void menu_wl(user& U1)
+void menu_wl(user &U1)
 {
-	system("cls");
-	int cho;
-	cout << "Workout Log Menu" << endl;
-	cout << "1. Add new workout" << endl;
-	cout << "2. Delete workout log" << endl;
-	cout << "3. View workout logs" << endl;
-	cout << "4. Edit workout log" << endl;
-	cout << "5. Exit" << endl;
-	cout << "Enter your choice: ";
-	cin >> cho;
+	int cho = 0;
+	do {
+		system("cls");
+		cout << "Workout Log Menu" << endl;
+		cout << "1. Add new workout" << endl;
+		cout << "2. Delete workout log" << endl;
+		cout << "3. View workout logs" << endl;
+		cout << "4. Edit workout log" << endl;
+		cout << "5. Exit" << endl;
+		cout << "Enter your choice: ";
+		cin >> cho;
 
-	switch (cho)
-	{
-	case 1:
-		U1.wl_entry();
-		break;
+		switch (cho)
+		{
+		case 1:
+			U1.wl_entry();
+			system("pause");
+			break;
 
-	case 2:
-		break;
+		case 2:
+			system("pause");
+			break;
 
-	case 3:
-		U1.wl_view();
-		break;
+		case 3:
+			U1.wl_view();
+			system("pause");
+			break;
 
-	case 4:
-		break;
+		case 4:
+			system("pause");
+			break;
 
-	case 5:
-		file_write_wl(U1);
-		menu_main();
-		break;
+		case 5:
+			file_write_wl(U1);
+			menu_main();
+			break;
 
-	default:
-		cout << "Invalid Input" << endl;
-		break;
-	}
+		default:
+			cout << "Invalid Input" << endl;
+			system("pause");
+			break;
+		}
+	} while (cho != 0);
 }
 
-void menu_fl(user& U1)
+void menu_fl(user &U1)
 {
-	system("cls");
 	int cho;
-	cout << "Food Log Menu" << endl;
-	cout << "1. Add new food log" << endl;
-	cout << "2. Delete food log" << endl;
-	cout << "3. View food logs" << endl;
-	cout << "4. Edit food log" << endl;
-	cout << "5. Exit" << endl;
-	cout << "Enter your choice: ";
-	cin >> cho;
+	do {
+		system("cls");
 
-	switch (cho)
-	{
-	case 1:
-		U1.fl_entry();
-		break;
+		cout << "Food Log Menu" << endl;
+		cout << "1. Add new food log" << endl;
+		cout << "2. Delete food log" << endl;
+		cout << "3. View food logs" << endl;
+		cout << "4. Edit food log" << endl;
+		cout << "5. Exit" << endl;
+		cout << "Enter your choice: ";
+		cin >> cho;
 
-	case 2:
-		break;
+		switch (cho)
+		{
+		case 1:
+			U1.fl_entry();
+			system("pause");
+			break;
 
-	case 3:
-		U1.fl_view();
-		break;
+		case 2:
+			system("pause");
+			break;
 
-	case 4:
-		break;
+		case 3:
+			U1.fl_view();
+			system("pause");
+			break;
 
-	case 5:
-		file_write_fl(U1);
-		menu_main();
-		break;
+		case 4:
+			system("pause");
+			break;
 
-	default:
-		cout << "Invalid Input" << endl;
-		break;
-	}
+		case 5:
+			file_write_fl(U1);
+			menu_main();
+			break;
+
+		default:
+			cout << "Invalid Input" << endl;
+			system("pause");
+			break;
+		}
+	} while (cho != 0);
 }
 
-void menu_lt(user& U1)
-{
-	system("cls");
+void menu_lt(user &U1)
+{	
 	int cho;
 
-	cout << "Life Time Records Menu" << endl;
-	cout << "1. View life time record" << endl;
-	cout << "2. Reset life time record" << endl;
-	cout << "3. Exit" << endl;
-	cout << "Enter your choice: ";
-	cin >> cho;
+	do {
+		system("cls");
 
-	switch (cho)
-	{
-	case 1:
-		U1.lt_view();
-		break;
+		cout << "Life Time Records Menu" << endl;
+		cout << "1. View life time record" << endl;
+		cout << "2. Reset life time record" << endl;
+		cout << "3. Exit" << endl;
+		cout << "Enter your choice: ";
+		cin >> cho;
 
-	case 2:
-		break;
+		switch (cho)
+		{
+		case 1:
+			U1.lt_view();
+			system("pause");
+			break;
 
-	case 3:
-		file_write_lt(U1);
-		menu_main();
-		break;
+		case 2:
+			system("pause");
+			break;
 
-	default:
-		cout << "Invalid Input" << endl;
-		break;
-	}
+		case 3:
+			file_write_lt(U1);
+			menu_main();
+			break;
+
+		default:
+			cout << "Invalid Input" << endl;
+			system("pause");
+			break;
+		}
+	} while (cho != 0);
 }
 
 void menu_user(user &U1)
-{
-	system("cls");
+{	
 	int cho;
-	
-	cout << "User Details Menu" << endl;
-	cout << "1. Add user details" << endl;
-	cout << "2. View user details" << endl;
-	cout << "3. Edit user details" << endl;
-	cout << "4. Delete user details" << endl;
-	cout << "5. Exit" << endl;
-	cout << "Enter your choice: ";
-	cin >> cho;
 
-	switch (cho)	
-	{
-	case 1:
-		U1.user_entry();
-		break;
+	do {
+		system("cls");
 
-	case 2:
-		U1.user_view();
-		break;
+		cout << "User Details Menu" << endl;
+		cout << "1. Add user details" << endl;
+		cout << "2. View user details" << endl;
+		cout << "3. Edit user details" << endl;
+		cout << "4. Delete user details" << endl;
+		cout << "5. Exit" << endl;
+		cout << "Enter your choice: ";
+		cin >> cho;
 
-	case 3:
-		break;
-	
-	case 4:
-		break;
+		switch (cho)
+		{
+		case 1:
+			U1.user_entry();
+			system("pause");
+			break;
 
-	case 5:
-		file_write_user(U1);
-		menu_main();
-		break;
+		case 2:
+			U1.user_view();
+			system("pause");
+			break;
 
-	default:
-		cout << "Invalid Input" << endl;
-		break;
-	}
+		case 3:
+			system("pause");
+			break;
+
+		case 4:
+			system("pause");
+			break;
+
+		case 5:
+			file_write_user(U1);
+			menu_main();
+			break;
+
+		default:
+			cout << "Invalid Input" << endl;
+			system("pause");
+			break;
+		}
+	} while (cho != 0);
 }
 
 void menu_main()
@@ -432,40 +461,35 @@ void menu_main()
 	cout << "3. Life Time Records" << endl;
 	cout << "4. User Details" << endl;
 	cout << "5. Exit" << endl;
+	cout << "Enter your choice: ";
+	cin >> cho;
 
-	do
+	switch (cho)
 	{
-		cout << "Enter your choice: ";
-		cin >> cho;
-		cout << endl;
+	case 1:
+		menu_wl(U1);
+		break;
 
-		switch (cho)
-		{
-		case 1:
-			menu_wl(U1);
-			break;
+	case 2:
+		menu_fl(U1);
+		break;
 
-		case 2:
-			menu_fl(U1);
-			break;
+	case 3:
+		menu_lt(U1);
+		break;
 
-		case 3:
-			menu_lt(U1);
-			break;
+	case 4:
+		menu_user(U1);
+		break;
 
-		case 4:
-			menu_user(U1);
-			break;
+	case 5:
+		exit(1);
+		break;
 
-		case 5:
-			exit(1);
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			break;
-		}
-	} while (cho != 0);
+	default:
+		cout << "Invalid Input" << endl;
+		break;
+	}
 }
 
 
