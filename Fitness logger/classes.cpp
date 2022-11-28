@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <string>
 #include <fstream>
+#include <iomanip>
 #include <stdlib.h>
 int count_wl = 0;
 int count_fl = 0;
@@ -140,7 +141,31 @@ void file_write_fl(food_log &F)
 	fout_fl.close();
 }
 
-class lifetime : public workout_log, public food_log
+class plan
+{
+	string pl_trainer;
+	string pl_gym;
+	string pl_type;
+	float pl_fees;
+	int pl_duration;
+	
+
+public:
+	plan()
+	{
+		ifstream fin_pl;
+		fin_pl.open("plan.txt", ios::in);
+		fin_pl.seekg(0, ios::beg);
+		fin_pl >> pl_trainer;
+		fin_pl >> pl_gym;
+		fin_pl >> pl_type;
+		fin_pl >> pl_fees;
+		fin_pl >> pl_duration;
+	}
+	
+};
+
+class lifetime : public workout_log, public food_log, public plan
 {
 protected:
 	int steps_lt{};
@@ -170,7 +195,7 @@ public:
 
 	void lt_view()
 	{
-		cout << "Life Time Records";
+		cout << "Life Time Records" << endl;
 		cout << "Total Steps: " << steps_lt << endl;
 		cout << "Total Calories: " << calories_lt << endl;
 		cout << "Total Distance Travelled: " << distance_lt << endl;
