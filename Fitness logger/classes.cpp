@@ -506,6 +506,13 @@ void file_write_user(user &U)
 }
 
 void menu_main();
+void pause_fn()
+{
+	cout << "Enter any key to continue...";
+	getchar();
+	getchar();
+}
+
 void menu_wl(user &U1)
 {
 	int cho = 0;
@@ -524,22 +531,22 @@ void menu_wl(user &U1)
 		{
 		case 1:
 			U1.wl_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
 			U1.wl_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 3:
 			U1.wl_edit();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 4:
 			U1.wl_delete();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 5:
@@ -549,7 +556,7 @@ void menu_wl(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -574,22 +581,22 @@ void menu_fl(user &U1)
 		{
 		case 1:
 			U1.fl_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
 			U1.fl_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 3:
 			U1.fl_edit();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 4:
 			U1.fl_delete();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 5:
@@ -599,7 +606,7 @@ void menu_fl(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -625,31 +632,32 @@ void menu_pl(user& U1)
 		{
 		case 1:
 			U1.pl_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
 			U1.pl_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 3:
 			U1.pl_edit();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 4:
 			U1.pl_delete();
-			system("pause");
+			menu_main();
 			break;
 
 		case 5:
 			file_write_pl(U1);
-			menu_main();
+			pause_fn();
 			break;
 
 		default:
 			cout << "Invalid Input" << endl;
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -673,12 +681,12 @@ void menu_lt(user &U1)
 		{
 		case 1:
 			U1.lt_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
 			U1.lt_delete();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 3:
@@ -688,7 +696,7 @@ void menu_lt(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -714,22 +722,22 @@ void menu_user(user &U1)
 		{
 		case 1:
 			U1.user_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
 			U1.user_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 3:
 			U1.user_edit();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 4:
 			U1.user_delete();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 5:
@@ -739,7 +747,7 @@ void menu_user(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
