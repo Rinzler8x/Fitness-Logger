@@ -272,9 +272,9 @@ public:
 		fin_pl.seekg(0, ios::beg);
 		fin_pl >> pl_trainer;
 		fin_pl >> pl_gym;
-		fin_pl >> pl_type;
 		fin_pl >> pl_fees;
 		fin_pl >> pl_duration;
+		fin_pl >> pl_type;
 	}
 
 	void pl_entry()
@@ -754,8 +754,8 @@ void menu_main()
 	cout << "1. Workout Logs" << endl;
 	cout << "2. Food Logs" << endl;
 	cout << "3. Life Time Records" << endl;
-	cout << "4. User Details" << endl;
-	cout << "5. Fitness Plan" << endl;
+	cout << "4. Fitness Plan" << endl;
+	cout << "5. User Details" << endl;
 	cout << "6. Exit" << endl;
 	cout << "Enter your choice: ";
 	cin >> cho;
@@ -775,11 +775,11 @@ void menu_main()
 		break;
 
 	case 4:
-		menu_user(U1);
+		menu_pl(U1);
 		break;
 
 	case 5:
-		menu_pl(U1);
+		menu_user(U1);
 		break;
 
 	case 6:
