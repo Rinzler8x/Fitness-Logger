@@ -3,11 +3,14 @@
 #include <conio.h>
 #include <string>
 #include <fstream>
+#include <iomanip>
 #include <stdlib.h>
 int count_wl = 0;
 int count_fl = 0;
 
 using namespace std;
+
+void pause_fn();
 
 class workout_log
 {
@@ -63,6 +66,73 @@ public:
 			cout << "Distance: " << distance_wl[i] << endl;
 			cout << "Average Heart rate: " << bpm_wl[i] << endl;
 		}
+	}
+
+	void wl_edit()
+	{
+		int cho;
+		cout << "Enter workout log to edit: ";
+		cin >> cho;
+		cho--;
+		if (cho <= ::count_wl) {
+			cout << "Enter new details for following" << endl;
+			cout << "Type of excercise: ";
+			cin >> excercise_wl[cho];
+			cout << "No of Steps: ";
+			cin >> steps_wl[cho];
+			cout << "Calories burnt: ";
+			cin >> calories_wl[cho];
+			cout << "Distance travelled: ";
+			cin >> distance_wl[cho];
+			cout << "Average heart rate: ";
+			cin >> bpm_wl[cho];
+		}
+		else
+			cout << "Invalid Input" << endl;
+	}
+
+	void wl_delete()
+	{
+		int cho;
+		cout << "Enter workout log to delete: ";
+		cin >> cho;
+		cho--;
+		if (cho <= ::count_wl) {
+			cout << "Deleting the following log:" << endl;
+			cout << "Excercise: " << excercise_wl[cho] << endl;
+			cout << "Steps: " << steps_wl[cho] << endl;
+			cout << "Calories: " << calories_wl[cho] << endl;
+			cout << "Distance: " << distance_wl[cho] << endl;
+			cout << "Average Heart rate: " << bpm_wl[cho] << endl;
+
+			for (int i = cho; i < ::count_wl; i++) {
+				string temp_s;
+				temp_s = excercise_wl[i];
+				excercise_wl[i] = excercise_wl[i + 1];
+				excercise_wl[i + 1] = temp_s;
+
+				int temp_i;
+				temp_i = steps_wl[i];
+				steps_wl[i] = steps_wl[i + 1];
+				steps_wl[i + 1] = temp_i;
+
+				temp_i = calories_wl[i];
+				calories_wl[i] = calories_wl[i + 1];
+				calories_wl[i + 1] = temp_i;
+
+				float temp_f;
+				temp_f = distance_wl[i];
+				distance_wl[i] = distance_wl[i + 1];
+				distance_wl[i + 1] = temp_f;
+
+				temp_i = bpm_wl[i];
+				bpm_wl[i] = bpm_wl[i + 1];
+				bpm_wl[i + 1] = temp_i;
+			}
+			::count_wl--;
+		}
+		else
+			cout << "Invalid Input" << endl;
 	}
 
 	friend void file_write_wl(workout_log &);
@@ -124,6 +194,51 @@ public:
 		}
 	}
 
+	void fl_edit()
+	{
+		int cho;
+		cout << "Enter food log to edit: ";
+		cin >> cho;
+		cho--;
+		if (cho <= ::count_fl) {
+			cout << "Enter new details for following: " << endl;
+			cout << "Type of food (Breakfast / Lunch / Dinner / Others): ";
+			cin >> type_fl[cho];
+			cout << "Amount of Calories: ";
+			cin >> calories_fl[cho];
+		}
+		else
+			cout << "Invalid Input" << endl;
+	}
+
+	void fl_delete()
+	{
+		int cho;
+		cout << "Enter food log to delete: ";
+		cin >> cho;
+		cho--;
+		if (cho <= ::count_fl) {
+			cout << "Deleting the following log:" << endl;
+			cout << "Type of Food: " << type_fl[cho] << endl;
+			cout << "Amount of Calories: " << calories_fl[cho] << endl;
+
+			for (int i = cho; i < ::count_fl; i++) {
+				string temp_s;
+				temp_s = type_fl[i];
+				type_fl[i] = type_fl[i + 1];
+				type_fl[i + 1] = temp_s;
+
+				int temp_i;
+				temp_i = calories_fl[i];
+				calories_fl[i] = calories_fl[i + 1];
+				calories_fl[i + 1] = temp_i;
+			}
+			::count_fl--;
+		}
+		else
+			cout << "Invalid Input" << endl;
+	}
+
 	friend void file_write_fl(food_log &);
 };
 
@@ -139,7 +254,96 @@ void file_write_fl(food_log &F)
 	fout_fl.close();
 }
 
-class lifetime : public workout_log, public food_log
+class plan
+{
+protected:
+	string pl_trainer{};
+	string pl_gym{};
+	string pl_type{};
+	float pl_fees{};
+	int pl_duration{};
+	
+
+public:
+	plan()
+	{
+		ifstream fin_pl;
+		fin_pl.open("plan.txt", ios::in);
+		fin_pl.seekg(0, ios::beg);
+		fin_pl >> pl_trainer;
+		fin_pl >> pl_gym;
+		fin_pl >> pl_fees;
+		fin_pl >> pl_duration;
+		fin_pl >> pl_type;
+	}
+
+	void pl_entry()
+	{
+		cout << "Fitness Plan Entry:" << endl;
+		cout << "Enter following details:" << endl;
+		cout << "Trainer Name: ";
+		cin >> pl_trainer;
+		cout << "Gym Name: ";
+		cin >> pl_gym;
+		cout << "Fees: ";
+		cin >> pl_fees;
+		cout << "Plan Duration: ";
+		cin >> pl_duration;
+		cout << "Plan Type: ";
+		cin >> pl_type;
+	}
+
+	void pl_view()
+	{
+		cout << "Fitness Plan" << endl;
+		cout << "Trainer Name: " << pl_trainer << endl;
+		cout << "Gym Name: " << pl_gym << endl;
+		cout << "Fees: " << pl_fees << endl;
+		cout << "Plan Duration: " << pl_duration << endl;
+		cout << "Plan Type: " << pl_type << endl;
+	}
+
+	void pl_edit()
+	{
+		cout << "Enter new details for following:" << endl;
+		cout << "Trainer Name: ";
+		cin >> pl_trainer;
+		cout << "Gym Name: ";
+		cin >> pl_gym;
+		cout << "Fees: ";
+		cin >> pl_fees;
+		cout << "Plan Duration:	";
+		cin >> pl_duration;
+		cout << "Plan Type: ";
+		cin >> pl_type;
+	}
+
+	void pl_delete()
+	{
+		cout << "Fitness plan deleted" << endl;
+		pl_trainer = '0';
+		pl_gym = '0';
+		pl_fees = 0;
+		pl_duration = 0;
+		pl_type = '0';
+	}
+
+	friend void file_write_pl(plan &);
+};
+
+void file_write_pl(plan& P)
+{
+	ofstream fout_pl;
+	fout_pl.open("plan.txt", ios::out);
+	fout_pl << P.pl_trainer << endl;
+	fout_pl << P.pl_gym << endl;
+	fout_pl << P.pl_fees << endl;
+	fout_pl << P.pl_duration << endl;
+	fout_pl << P.pl_type << endl;
+	fout_pl.close();
+}
+
+class lifetime : public workout_log, public food_log, public plan
 {
 protected:
 	int steps_lt{};
@@ -162,17 +366,23 @@ public:
 	{
 		steps_lt += steps_wl[::count_wl];
 		calories_lt += calories_wl[::count_wl];
-		if (count_fl == count_wl)
-			calories_lt -= calories_fl[::count_fl];
 		distance_lt += distance_wl[::count_wl];
 	}
 
 	void lt_view()
 	{
-		cout << "Life Time Records";
+		cout << "Life Time Records" << endl;
 		cout << "Total Steps: " << steps_lt << endl;
 		cout << "Total Calories: " << calories_lt << endl;
 		cout << "Total Distance Travelled: " << distance_lt << endl;
+	}
+
+	void lt_delete()
+	{
+		cout << "Life Time Records are reset" << endl;
+		steps_lt = 0;
+		calories_lt = 0;
+		distance_lt = 0;
 	}
 
 	friend void file_write_lt(lifetime &);
@@ -181,7 +391,7 @@ public:
 void file_write_lt(lifetime &L)
 {
 	ofstream fout_lt;
-	fout_lt.open("lifetime.txt", ios::in);
+	fout_lt.open("lifetime.txt", ios::out);
 	fout_lt << L.steps_lt << endl;
 	fout_lt << L.calories_lt << endl;
 	fout_lt << L.distance_lt << endl;
@@ -219,21 +429,21 @@ public:
 	{
 		cout << "User Entry" << endl;
 		cout << "Enter the following details:" << endl;
-		cout << "Enter Id: ";
+		cout << "Id: ";
 		cin >> ID;
-		cout << "Enter name: ";
+		cout << "Name: ";
 		cin >> name;
-		cout << "Enter age: ";
+		cout << "Age: ";
 		cin >> age;
-		cout << "Enter height: ";
+		cout << "Height: ";
 		cin >> height;
-		cout << "Enter weight: ";
+		cout << "Weight: ";
 		cin >> weight;
-		cout << "Enter blood group: ";
+		cout << "Blood group: ";
 		cin >> blood_grp;
 	}
 
-	void calc_bmi()
+	void bmi()
 	{
 		BMI = weight / (height * height);
 	}
@@ -248,6 +458,34 @@ public:
 		cout << "Weight: " << weight << endl;
 		cout << "Blood Group: " << blood_grp << endl;
 		cout << "BMI: " << BMI << endl;
+	}
+
+	void user_edit()
+	{
+		cout << "Enter new details to following:" << endl;
+		cout << "Id: ";
+		cin >> ID;
+		cout << "Name: ";
+		cin >> name;
+		cout << "Age: ";
+		cin >> age;
+		cout << "Height: ";
+		cin >> height;
+		cout << "Weight: ";
+		cin >> weight;
+		cout << "Blood group: ";
+		cin >> blood_grp;
+	}
+
+	void user_delete()
+	{
+		cout << "User details are deleted" << endl;
+		ID = 0;
+		name = '0';
+		age = 0;
+		height = 0;
+		weight = 0;
+		blood_grp = '0';
 	}
 
 	friend void file_write_user(user &);
@@ -268,6 +506,13 @@ void file_write_user(user &U)
 }
 
 void menu_main();
+void pause_fn()
+{
+	cout << "Enter any key to continue...";
+	getchar();
+	getchar();
+}
+
 void menu_wl(user &U1)
 {
 	int cho = 0;
@@ -275,9 +520,9 @@ void menu_wl(user &U1)
 		system("cls");
 		cout << "Workout Log Menu" << endl;
 		cout << "1. Add new workout" << endl;
-		cout << "2. Delete workout log" << endl;
-		cout << "3. View workout logs" << endl;
-		cout << "4. Edit workout log" << endl;
+		cout << "2. View workout logs" << endl;
+		cout << "3. Edit workout log" << endl;
+		cout << "4. Delete workout log" << endl;
 		cout << "5. Exit" << endl;
 		cout << "Enter your choice: ";
 		cin >> cho;
@@ -286,20 +531,22 @@ void menu_wl(user &U1)
 		{
 		case 1:
 			U1.wl_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
-			system("pause");
+			U1.wl_view();
+			pause_fn();
 			break;
 
 		case 3:
-			U1.wl_view();
-			system("pause");
+			U1.wl_edit();
+			pause_fn();
 			break;
 
 		case 4:
-			system("pause");
+			U1.wl_delete();
+			pause_fn();
 			break;
 
 		case 5:
@@ -309,7 +556,7 @@ void menu_wl(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -323,9 +570,9 @@ void menu_fl(user &U1)
 
 		cout << "Food Log Menu" << endl;
 		cout << "1. Add new food log" << endl;
-		cout << "2. Delete food log" << endl;
-		cout << "3. View food logs" << endl;
-		cout << "4. Edit food log" << endl;
+		cout << "2. View food logs" << endl;
+		cout << "3. Edit food log" << endl;
+		cout << "4. Delete food log" << endl;
 		cout << "5. Exit" << endl;
 		cout << "Enter your choice: ";
 		cin >> cho;
@@ -334,20 +581,22 @@ void menu_fl(user &U1)
 		{
 		case 1:
 			U1.fl_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
-			system("pause");
+			U1.fl_view();
+			pause_fn();
 			break;
 
 		case 3:
-			U1.fl_view();
-			system("pause");
+			U1.fl_edit();
+			pause_fn();
 			break;
 
 		case 4:
-			system("pause");
+			U1.fl_delete();
+			pause_fn();
 			break;
 
 		case 5:
@@ -357,7 +606,58 @@ void menu_fl(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
+			break;
+		}
+	} while (cho != 0);
+}
+
+void menu_pl(user& U1)
+{
+	int cho;
+
+	do {
+		system("cls");
+
+		cout << "Fitness Plan Menu" << endl;
+		cout << "1. Add fitness plan" << endl;
+		cout << "2. View fitness plan" << endl;
+		cout << "3. Edit fitness plan" << endl;
+		cout << "4. Delete fitness plan" << endl;
+		cout << "5. Exit" << endl;
+		cout << "Enter your choice: ";
+		cin >> cho;
+
+		switch (cho)
+		{
+		case 1:
+			U1.pl_entry();
+			pause_fn();
+			break;
+
+		case 2:
+			U1.pl_view();
+			pause_fn();
+			break;
+
+		case 3:
+			U1.pl_edit();
+			pause_fn();
+			break;
+
+		case 4:
+			U1.pl_delete();
+			menu_main();
+			break;
+
+		case 5:
+			file_write_pl(U1);
+			pause_fn();
+			break;
+
+		default:
+			cout << "Invalid Input" << endl;
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -381,11 +681,12 @@ void menu_lt(user &U1)
 		{
 		case 1:
 			U1.lt_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
-			system("pause");
+			U1.lt_delete();
+			pause_fn();
 			break;
 
 		case 3:
@@ -395,7 +696,7 @@ void menu_lt(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -421,20 +722,22 @@ void menu_user(user &U1)
 		{
 		case 1:
 			U1.user_entry();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 2:
 			U1.user_view();
-			system("pause");
+			pause_fn();
 			break;
 
 		case 3:
-			system("pause");
+			U1.user_edit();
+			pause_fn();
 			break;
 
 		case 4:
-			system("pause");
+			U1.user_delete();
+			pause_fn();
 			break;
 
 		case 5:
@@ -444,7 +747,7 @@ void menu_user(user &U1)
 
 		default:
 			cout << "Invalid Input" << endl;
-			system("pause");
+			pause_fn();
 			break;
 		}
 	} while (cho != 0);
@@ -459,8 +762,9 @@ void menu_main()
 	cout << "1. Workout Logs" << endl;
 	cout << "2. Food Logs" << endl;
 	cout << "3. Life Time Records" << endl;
-	cout << "4. User Details" << endl;
-	cout << "5. Exit" << endl;
+	cout << "4. Fitness Plan" << endl;
+	cout << "5. User Details" << endl;
+	cout << "6. Exit" << endl;
 	cout << "Enter your choice: ";
 	cin >> cho;
 
@@ -479,10 +783,14 @@ void menu_main()
 		break;
 
 	case 4:
-		menu_user(U1);
+		menu_pl(U1);
 		break;
 
 	case 5:
+		menu_user(U1);
+		break;
+
+	case 6:
 		exit(1);
 		break;
 
