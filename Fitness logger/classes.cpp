@@ -135,10 +135,10 @@ public:
 			cout << "Invalid Input" << endl;
 	}
 
-	friend void file_write_wl(workout_log &);
+	friend void file_write_wl(workout_log&);
 };
 
-void file_write_wl(workout_log &W)
+void file_write_wl(workout_log& W)
 {
 	ofstream fout_wl;
 	fout_wl.open("workout_logs.txt", ios::out);
@@ -239,10 +239,10 @@ public:
 			cout << "Invalid Input" << endl;
 	}
 
-	friend void file_write_fl(food_log &);
+	friend void file_write_fl(food_log&);
 };
 
-void file_write_fl(food_log &F)
+void file_write_fl(food_log& F)
 {
 	ofstream fout_fl;
 	fout_fl.open("food_logs.txt", ios::in);
@@ -262,7 +262,7 @@ protected:
 	string pl_type{};
 	float pl_fees{};
 	int pl_duration{};
-	
+
 
 public:
 	plan()
@@ -328,7 +328,7 @@ public:
 		pl_type = '0';
 	}
 
-	friend void file_write_pl(plan &);
+	friend void file_write_pl(plan&);
 };
 
 void file_write_pl(plan& P)
@@ -385,10 +385,10 @@ public:
 		distance_lt = 0;
 	}
 
-	friend void file_write_lt(lifetime &);
+	friend void file_write_lt(lifetime&);
 };
 
-void file_write_lt(lifetime &L)
+void file_write_lt(lifetime& L)
 {
 	ofstream fout_lt;
 	fout_lt.open("lifetime.txt", ios::out);
@@ -488,10 +488,10 @@ public:
 		blood_grp = '0';
 	}
 
-	friend void file_write_user(user &);
+	friend void file_write_user(user&);
 };
 
-void file_write_user(user &U)
+void file_write_user(user& U)
 {
 	ofstream fout_u;
 	fout_u.open("user_details.txt", ios::out);
@@ -513,7 +513,7 @@ void pause_fn()
 	getchar();
 }
 
-void menu_wl(user &U1)
+void menu_wl(user& U1)
 {
 	int cho = 0;
 	do {
@@ -562,7 +562,7 @@ void menu_wl(user &U1)
 	} while (cho != 0);
 }
 
-void menu_fl(user &U1)
+void menu_fl(user& U1)
 {
 	int cho;
 	do {
@@ -663,8 +663,8 @@ void menu_pl(user& U1)
 	} while (cho != 0);
 }
 
-void menu_lt(user &U1)
-{	
+void menu_lt(user& U1)
+{
 	int cho;
 
 	do {
@@ -702,8 +702,8 @@ void menu_lt(user &U1)
 	} while (cho != 0);
 }
 
-void menu_user(user &U1)
-{	
+void menu_user(user& U1)
+{
 	int cho;
 
 	do {
