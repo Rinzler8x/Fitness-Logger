@@ -52,8 +52,6 @@ public:
 		cin >> distance_wl[::count_wl];
 		cout << "Average heart rate: ";
 		cin >> bpm_wl[::count_wl];
-
-		::count_wl++;
 	}
 
 	void wl_view()
@@ -91,7 +89,7 @@ public:
 			cout << "Invalid Input" << endl;
 	}
 
-	void wl_delete()
+	int wl_delete()
 	{
 		int cho;
 		cout << "Enter workout log to delete: ";
@@ -130,6 +128,7 @@ public:
 				bpm_wl[i + 1] = temp_i;
 			}
 			::count_wl--;
+			return cho;
 		}
 		else
 			cout << "Invalid Input" << endl;
@@ -369,6 +368,13 @@ public:
 		distance_lt += distance_wl[::count_wl];
 	}
 
+	void operator -(int cho)
+	{
+		steps_lt -= steps_wl[cho];
+		calories_lt -= calories_wl[cho];
+		distance_lt -= distance_wl[cho];
+	}
+
 	void lt_view()
 	{
 		cout << "Life Time Records" << endl;
@@ -516,6 +522,7 @@ void pause_fn()
 void menu_wl(user &U1)
 {
 	int cho = 0;
+	int d{};
 	do {
 		system("cls");
 		cout << "Workout Log Menu" << endl;
@@ -532,6 +539,8 @@ void menu_wl(user &U1)
 		case 1:
 			U1.wl_entry();
 			pause_fn();
+			+U1;
+			::count_wl++;
 			break;
 
 		case 2:
@@ -545,8 +554,9 @@ void menu_wl(user &U1)
 			break;
 
 		case 4:
-			U1.wl_delete();
+			d = U1.wl_delete();
 			pause_fn();
+			U1-(d);
 			break;
 
 		case 5:
