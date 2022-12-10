@@ -342,23 +342,49 @@ public:
 
 	void pl_entry()
 	{
-		cout << "Fitness Plan Entry:" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
+		cout.width(77);
+		cout << "F I T N E S S  P L A N  E N T R Y" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n";
 		cout << "Enter following details:" << endl;
 		cout << "Trainer Name: ";
 		cin >> pl_trainer;
+		cout << "\n";
 		cout << "Gym Name: ";
 		cin >> pl_gym;
+		cout << "\n";
 		cout << "Fees: ";
 		cin >> pl_fees;
+		cout << "\n";
 		cout << "Plan Duration: ";
 		cin >> pl_duration;
+		cout << "\n";
 		cout << "Plan Type: ";
 		cin >> pl_type;
 	}
 
 	void pl_view()
 	{
-		cout << "Fitness Plan" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
+		cout.width(71);
+		cout << "F I T N E S S  P L A N" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n";
 		cout << "Trainer Name: " << pl_trainer << endl;
 		cout << "Gym Name: " << pl_gym << endl;
 		cout << "Fees: " << pl_fees << endl;
@@ -368,6 +394,11 @@ public:
 
 	void pl_edit()
 	{
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "Enter new details for following:" << endl;
 		cout << "Trainer Name: ";
 		cin >> pl_trainer;
@@ -383,6 +414,11 @@ public:
 
 	void pl_delete()
 	{
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "Fitness plan deleted" << endl;
 		pl_trainer = '0';
 		pl_gym = '0';
@@ -540,7 +576,18 @@ public:
 
 	void user_view()
 	{
-		cout << "User Details" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
+		cout.width(70);
+		cout << "U S E R  D E T A I L S" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "ID: " << ID << endl;
 		cout << "Name: " << name << endl;
 		cout << "Age: " << age << endl;
@@ -552,6 +599,11 @@ public:
 
 	void user_edit()
 	{
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "Enter new details to following:" << endl;
 		cout << "Id: ";
 		cin >> ID;
@@ -569,6 +621,11 @@ public:
 
 	void user_delete()
 	{
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "User details are deleted" << endl;
 		ID = 0;
 		name = '0';
@@ -724,14 +781,17 @@ void menu_pl(user& U1)
 
 	do {
 		system("cls");
-
-		cout << "Fitness Plan Menu" << endl;
-		cout << "1. Add fitness plan" << endl;
-		cout << "2. View fitness plan" << endl;
-		cout << "3. Edit fitness plan" << endl;
-		cout << "4. Delete fitness plan" << endl;
-		cout << "5. Exit" << endl;
-		cout << "Enter your choice: ";
+		cout << "\n";
+		cout.width(76);
+		cout << "F I T N E S S  P L A N  M E N U" << endl;
+		cout << "\n";
+		cout << setw(69); cout << "1. Add fitness plan" << endl;
+		cout << setw(70); cout << "2. View fitness plan" << endl;
+		cout << setw(70); cout << "3. Edit fitness plan" << endl;
+		cout << setw(72); cout << "4. Delete fitness plan" << endl;
+		cout << setw(57); cout << "5. Exit" << endl;
+		cout << "\n";
+		cout << setw(69); cout << "Enter your choice: ";
 		cin >> cho;
 
 		switch (cho)
@@ -896,17 +956,18 @@ void menu_main()
 	cout.width(45);
 	pause_wlcm();*/
 	system("cls");
-	cout.width(66);
+	cout.width(62);
 	cout << "=========\n";
-	cout.width(64);
+	cout.width(60);
 	cout << "M E N U" << endl;
-	cout.width(66);
+	cout.width(62);
 	cout << "=========\n" << endl;
 	cout << setw(63); cout << "1. Workout Logs" << endl;
 	cout << setw(60); cout << "2. Food Logs" << endl;
 	cout << setw(68); cout << "3. Life Time Records" << endl;
 	cout << setw(63); cout << "4. User Details" << endl;
-	cout << setw(55); cout << "5. Exit" << endl;
+	cout << setw(63); cout << "5. Fitness Plan" << endl;
+	cout << setw(55); cout << "6. Exit" << endl;
 
 	do
 	{
