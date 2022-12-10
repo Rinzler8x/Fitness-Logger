@@ -758,7 +758,7 @@ void menu_main()
 	system("cls");
 	user U1;
 	int cho, i, n = 5;
-	/*for (i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 	{
 		cout << "\n";
 	}
@@ -782,7 +782,7 @@ void menu_main()
 		Sleep(7);
 	}
 	cout.width(45);
-	pause_wlcm();*/
+	pause_wlcm();
 	system("cls");
 	cout.width(66);
 	cout << "=========\n";
@@ -794,8 +794,7 @@ void menu_main()
 	cout << setw(60); cout << "2. Food Logs" << endl;
 	cout << setw(68); cout << "3. Life Time Records" << endl;
 	cout << setw(63); cout << "4. User Details" << endl;
-	cout << setw(63); cout << "5. Fitness Plan" <<
-	cout << setw(55); cout << "6. Exit" << endl;
+	cout << setw(55); cout << "5. Exit" << endl;
 
 	do
 	{
@@ -805,36 +804,37 @@ void menu_main()
 		cin >> cho;
 		cout << endl;
 
-	switch (cho)
-	{
-	case 1:
-		menu_wl(U1);
-		break;
+		switch (cho)
+		{
+		case 1:
+			menu_wl(U1);
+			break;
 
-	case 2:
-		menu_fl(U1);
-		break;
+		case 2:
+			menu_fl(U1);
+			break;
 
-	case 3:
-		menu_lt(U1);
-		break;
+		case 3:
+			menu_lt(U1);
+			break;
 
-	case 4:
-		menu_pl(U1);
-		break;
+		case 4:
+			menu_user(U1);
+			break;
 
-	case 5:
-		menu_user(U1);
-		break;
+		case 5:
+			menu_pl(U1);
+			break;
 
-	case 6:
-		exit(1);
-		break;
+		case 6:
+			exit(1);
+			break;
 
-	default:
-		cout << "Invalid Input" << endl;
-		break;
-	}
+		default:
+			cout << "Invalid Input" << endl;
+			break;
+		}
+	} while (cho != 0);
 }
 
 
