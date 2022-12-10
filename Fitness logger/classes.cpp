@@ -757,16 +757,53 @@ void menu_main()
 {
 	system("cls");
 	user U1;
-	int cho;
-	cout << "Menu" << endl;
-	cout << "1. Workout Logs" << endl;
-	cout << "2. Food Logs" << endl;
-	cout << "3. Life Time Records" << endl;
-	cout << "4. Fitness Plan" << endl;
-	cout << "5. User Details" << endl;
-	cout << "6. Exit" << endl;
-	cout << "Enter your choice: ";
-	cin >> cho;
+	int cho, i, n = 5;
+	/*for (i = 0; i < n; i++)
+	{
+		cout << "\n";
+	}
+	system("COLOR B0");
+	cout << "\n\t\t\t";
+	for (int i = 0; i < 70; i++)
+	{
+		cout << "*";
+		Sleep(7);
+	}
+	cout << "\n" << endl;
+	cout.width(74);
+	cout << "F I T N E S S  L O G G E R" << endl;
+	cout.width(67);
+	cout << "W E L C O M E" << endl;
+	cout << "\n";
+	cout << "\n\t\t\t";
+	for (int i = 0; i < 70; i++)
+	{
+		cout << "*";
+		Sleep(7);
+	}
+	cout.width(45);
+	pause_wlcm();*/
+	system("cls");
+	cout.width(66);
+	cout << "=========\n";
+	cout.width(64);
+	cout << "M E N U" << endl;
+	cout.width(66);
+	cout << "=========\n" << endl;
+	cout << setw(63); cout << "1. Workout Logs" << endl;
+	cout << setw(60); cout << "2. Food Logs" << endl;
+	cout << setw(68); cout << "3. Life Time Records" << endl;
+	cout << setw(63); cout << "4. User Details" << endl;
+	cout << setw(63); cout << "5. Fitness Plan" <<
+	cout << setw(55); cout << "6. Exit" << endl;
+
+	do
+	{
+		cout << endl;
+		cout << setw(67);
+		cout << "Enter your choice: ";
+		cin >> cho;
+		cout << endl;
 
 	switch (cho)
 	{
