@@ -758,7 +758,7 @@ void menu_pl(user& U1)
 
 		case 5:
 			file_write_pl(U1);
-			pause_fn();
+			menu_main();
 			break;
 
 		default:
@@ -870,7 +870,7 @@ void menu_main()
 	system("cls");
 	user U1;
 	int cho, i, n = 5;
-	for (i = 0; i < n; i++)
+	/*for (i = 0; i < n; i++)
 	{
 		cout << "\n";
 	}
@@ -894,7 +894,7 @@ void menu_main()
 		Sleep(7);
 	}
 	cout.width(45);
-	pause_wlcm();
+	pause_wlcm();*/
 	system("cls");
 	cout.width(66);
 	cout << "=========\n";
@@ -952,6 +952,32 @@ void menu_main()
 
 int main()
 {
+	int i, n = 5;
+	for (i = 0; i < n; i++)
+	{
+		cout << "\n";
+	}
+	system("COLOR B0");
+	cout << "\n\t\t\t";
+	for (int i = 0; i < 70; i++)
+	{
+		cout << "*";
+		Sleep(7);
+	}
+	cout << "\n" << endl;
+	cout.width(74);
+	cout << "F I T N E S S  L O G G E R" << endl;
+	cout.width(67);
+	cout << "W E L C O M E" << endl;
+	cout << "\n";
+	cout << "\n\t\t\t";
+	for (int i = 0; i < 70; i++)
+	{
+		cout << "*";
+		Sleep(7);
+	}
+	cout.width(45);
+	pause_wlcm();
 	menu_main();
 	return 0;
 }
