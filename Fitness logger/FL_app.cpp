@@ -245,7 +245,7 @@ public:
 		{
 			cout << "_";
 		}
-		if (::count_wl == 0)
+		if (::count_fl == 0)
 			cout << "No logs entered" << endl;
 		else {
 			for (int i = 0; i < ::count_fl; i++) {
