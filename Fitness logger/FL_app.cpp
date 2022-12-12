@@ -12,6 +12,7 @@ int count_fl = 0;
 using namespace std;
 
 void pause_fn();
+void pause_wlcm();
 
 class workout_log
 {
