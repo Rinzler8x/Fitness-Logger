@@ -694,6 +694,7 @@ void pause_wlcm()
 
 void menu_wl(user& U1)
 {
+	
 	int cho = 0;
 	do {
 		system("cls");
