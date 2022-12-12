@@ -60,7 +60,7 @@ public:
 		cin >> steps_wl[::count_wl];
 		cout << "Calories burnt: ";
 		cin >> calories_wl[::count_wl];
-		cout << "Distance travelled: ";
+		cout << "Distance travelled (in km): ";
 		cin >> distance_wl[::count_wl];
 		cout << "Average heart rate: ";
 		cin >> bpm_wl[::count_wl];
@@ -88,7 +88,7 @@ public:
 				cout << "\nExcercise: " << excercise_wl[i] << endl;
 				cout << "Steps    : " << steps_wl[i] << endl;
 				cout << "Calories : " << calories_wl[i] << endl;
-				cout << "Distance : " << distance_wl[i] << endl;
+				cout << "Distance (in km): " << distance_wl[i] << endl;
 				cout << "Average Heart rate: " << bpm_wl[i] << endl;
 				cout << "\n";
 			}
@@ -114,7 +114,7 @@ public:
 			cin >> steps_wl[cho];
 			cout << "Calories burnt: ";
 			cin >> calories_wl[cho];
-			cout << "Distance travelled: ";
+			cout << "Distance travelled (in km): ";
 			cin >> distance_wl[cho];
 			cout << "Average heart rate: ";
 			cin >> bpm_wl[cho];
@@ -139,7 +139,7 @@ public:
 			cout << "Excercise: " << excercise_wl[cho] << endl;
 			cout << "Steps: " << steps_wl[cho] << endl;
 			cout << "Calories: " << calories_wl[cho] << endl;
-			cout << "Distance: " << distance_wl[cho] << endl;
+			cout << "Distance (in km): " << distance_wl[cho] << endl;
 			cout << "Average Heart rate: " << bpm_wl[cho] << endl;
 
 			for (int i = cho; i < ::count_wl; i++) {
