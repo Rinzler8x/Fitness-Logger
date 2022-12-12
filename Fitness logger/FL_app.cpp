@@ -12,6 +12,7 @@ int count_fl = 0;
 using namespace std;
 
 void pause_fn();
+void pause_wlcm();
 
 class workout_log
 {
@@ -80,13 +81,17 @@ public:
 		{
 			cout << "_";
 		}
-		for (int i = 0; i < ::count_wl; i++) {
-			cout << "\nExcercise: " << excercise_wl[i] << endl;
-			cout << "Steps    : " << steps_wl[i] << endl;
-			cout << "Calories : " << calories_wl[i] << endl;
-			cout << "Distance : " << distance_wl[i] << endl;
-			cout << "Average Heart rate: " << bpm_wl[i] << endl;
-			cout << "\n";
+		if (::count_wl == 0)
+			cout << "No logs entered" << endl;
+		else {
+			for (int i = 0; i < ::count_wl; i++) {
+				cout << "\nExcercise: " << excercise_wl[i] << endl;
+				cout << "Steps    : " << steps_wl[i] << endl;
+				cout << "Calories : " << calories_wl[i] << endl;
+				cout << "Distance : " << distance_wl[i] << endl;
+				cout << "Average Heart rate: " << bpm_wl[i] << endl;
+				cout << "\n";
+			}
 		}
 	}
 
@@ -97,7 +102,7 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n"<<endl;
+		cout << "\n" << endl;
 		cout << "Enter workout log to edit: ";
 		cin >> cho;
 		cho--;
@@ -240,10 +245,14 @@ public:
 		{
 			cout << "_";
 		}
-		for (int i = 0; i < ::count_fl; i++) {
-			cout << "Type of Food: " << type_fl[i] << endl;
-			cout << "Amount of Calories: " << calories_fl[i] << endl;
-			cout << "\n";
+		if (::count_wl == 0)
+			cout << "No logs entered" << endl;
+		else {
+			for (int i = 0; i < ::count_fl; i++) {
+				cout << "Type of Food: " << type_fl[i] << endl;
+				cout << "Amount of Calories: " << calories_fl[i] << endl;
+				cout << "\n";
+			}
 		}
 	}
 
@@ -466,13 +475,6 @@ public:
 		}
 	}
 
-	void lt_undo(int cho)
-	{
-		steps_lt -= steps_wl[cho];
-		calories_lt -= calories_wl[cho];
-		distance_lt -= distance_wl[cho];
-	}
-
 	void lt_view()
 	{
 		for (int i = 0; i < 120; i++)
@@ -566,9 +568,9 @@ public:
 		cin >> name;
 		cout << "Age: ";
 		cin >> age;
-		cout << "Height: ";
+		cout << "Height (in m): ";
 		cin >> height;
-		cout << "Weight: ";
+		cout << "Weight (in kg): ";
 		cin >> weight; 
 		cout << "Blood group: ";
 		cin >> blood_grp;
@@ -591,8 +593,8 @@ public:
 		cout << "ID: " << ID << endl;
 		cout << "Name: " << name << endl;
 		cout << "Age: " << age << endl;
-		cout << "Height: " << height << endl;
-		cout << "Weight: " << weight << endl;
+		cout << "Height (in m): " << height << endl;
+		cout << "Weight (in kg): " << weight << endl;
 		cout << "Blood Group: " << blood_grp << endl;
 	}
 
@@ -640,6 +642,8 @@ public:
 	friend void bmi(user&);
 
 	friend void file_write_user(user&);
+
+	~user(){}
 };
 
 void bmi(user& U)
@@ -865,7 +869,7 @@ void menu_lt(user& U1)
 		cout << "\n";
 		cout << setw(74); cout << "1. View life time record" << endl;
 		//cout << setw(75); cout << "2. Reset life time record" << endl;
-		cout << setw(57); cout << "3. Exit" << endl;
+		cout << setw(57); cout << "2. Exit" << endl;
 		cout << "\n";
 		cout << setw(69); cout << "Enter your choice: ";
 		cin >> cho;
@@ -883,7 +887,7 @@ void menu_lt(user& U1)
 			pause_fn();
 			break;*/
 
-		case 3:
+		case 2:
 			/*file_write_lt(U1);*/
 			menu_main();
 			break;
@@ -1026,6 +1030,7 @@ void menu_main()
 			break;
 
 		case 7:
+			U1.~user();
 			exit(1);
 			break;
 
