@@ -365,16 +365,12 @@ public:
 		cout << "Enter following details:" << endl;
 		cout << "Trainer Name: ";
 		cin >> pl_trainer;
-		cout << "\n";
 		cout << "Gym Name: ";
 		cin >> pl_gym;
-		cout << "\n";
 		cout << "Fees: ";
 		cin >> pl_fees;
-		cout << "\n";
 		cout << "Plan Duration: ";
 		cin >> pl_duration;
-		cout << "\n";
 		cout << "Plan Type: ";
 		cin >> pl_type;
 	}
@@ -974,7 +970,7 @@ void menu_main()
 	cout << setw(68); cout << "3. Life Time Records" << endl;
 	cout << setw(63); cout << "4. Fitness Plan" << endl;
 	cout << setw(63); cout << "5. User Details" << endl;
-	cout << "6. Calculate BMI" << endl;
+	cout << setw(64); cout << "6. Calculate BMI" << endl;
 	cout << setw(55); cout << "7. Exit" << endl;
 
 	do
@@ -1008,7 +1004,17 @@ void menu_main()
 			break;
 
 		case 6:
-			cout << "Calculate your BMI" << endl;
+			for (int i = 0; i < 120; i++)
+			{
+				cout << "_";
+			}
+			cout << "\n" << endl;
+			cout.width(72);
+			cout << "B M I   C A L C U L A T I O N" << endl;
+			for (int i = 0; i < 120; i++)
+			{
+				cout << "_";
+			}
 			cout << "Enter following details" << endl;
 			cout << "Height (in m): ";
 			cin >> h;
