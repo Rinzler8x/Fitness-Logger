@@ -641,6 +641,8 @@ public:
 	friend void bmi(user&);
 
 	friend void file_write_user(user&);
+
+	~user(){}
 };
 
 void bmi(user& U)
@@ -865,7 +867,7 @@ void menu_lt(user& U1)
 		cout << "\n";
 		cout << setw(74); cout << "1. View life time record" << endl;
 		//cout << setw(75); cout << "2. Reset life time record" << endl;
-		cout << setw(57); cout << "3. Exit" << endl;
+		cout << setw(57); cout << "2. Exit" << endl;
 		cout << "\n";
 		cout << setw(69); cout << "Enter your choice: ";
 		cin >> cho;
@@ -883,7 +885,7 @@ void menu_lt(user& U1)
 			pause_fn();
 			break;*/
 
-		case 3:
+		case 2:
 			/*file_write_lt(U1);*/
 			menu_main();
 			break;
@@ -1026,6 +1028,7 @@ void menu_main()
 			break;
 
 		case 7:
+			U1.~user();
 			exit(1);
 			break;
 
