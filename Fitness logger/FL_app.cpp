@@ -455,16 +455,7 @@ protected:
 	float distance_lt{};
 
 public:
-	lifetime()
-	{
-		/*ifstream fin_lt;
-		fin_lt.open("lifetime.txt", ios::in);
-		fin_lt.seekg(0, ios::beg);
-		fin_lt >> steps_lt;
-		fin_lt >> calories_lt;
-		fin_lt >> distance_lt;
-		fin_lt.close();*/
-	}
+	lifetime(){}
 
 	void lt_add()
 	{
@@ -507,18 +498,7 @@ public:
 		distance_lt = 0;
 	}
 
-	/*friend void file_write_lt(lifetime&);*/
 };
-
-//void file_write_lt(lifetime& L)
-//{
-//	ofstream fout_lt;
-//	fout_lt.open("lifetime.txt", ios::out);
-//	fout_lt << L.steps_lt << endl;
-//	fout_lt << L.calories_lt << endl;
-//	fout_lt << L.distance_lt << endl;
-//	fout_lt.close();
-//}
 
 class user : public lifetime
 {
@@ -867,7 +847,6 @@ void menu_lt(user& U1)
 		cout << "L I F E  T I M E  R E C O R D S  M E N U" << endl;
 		cout << "\n";
 		cout << setw(74); cout << "1. View life time record" << endl;
-		//cout << setw(75); cout << "2. Reset life time record" << endl;
 		cout << setw(57); cout << "2. Exit" << endl;
 		cout << "\n";
 		cout << setw(69); cout << "Enter your choice: ";
@@ -881,13 +860,7 @@ void menu_lt(user& U1)
 			pause_fn();
 			break;
 
-		/*case 2:
-			U1.lt_delete();
-			pause_fn();
-			break;*/
-
 		case 2:
-			/*file_write_lt(U1);*/
 			menu_main();
 			break;
 
