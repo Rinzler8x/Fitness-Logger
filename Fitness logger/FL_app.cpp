@@ -6,10 +6,9 @@
 #include <iomanip>
 #include <stdlib.h>
 #include<Windows.h>
+using namespace std;
 int count_wl = 0;
 int count_fl = 0;
-
-using namespace std;
 
 void pause_fn();
 void pause_wlcm();
