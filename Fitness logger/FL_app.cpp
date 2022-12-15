@@ -488,7 +488,7 @@ public:
 
 			case 3:
 				U1.pl_delete();
-				menu_main();
+				pause_fn();
 				break;
 
 			case 4:
@@ -894,7 +894,7 @@ void menu_main()
 			{
 				cout << "_";
 			}
-			cout << "Enter following details" << endl;
+			cout << "\n\nEnter following details" << endl;
 			cout << "Height (in m): ";
 			cin >> h;
 			cout << "Weight (in kg): ";
