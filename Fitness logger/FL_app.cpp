@@ -915,7 +915,6 @@ void menu_main()
 	}while (cho != 0);
 }
 
-
 int main()
 {
 	int i, n = 5;
