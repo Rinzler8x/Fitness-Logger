@@ -1,5 +1,5 @@
-Maxell
-Noberts
-4000
-4
-FatLoss
+Maxwell
+Norberts
+3300
+6
+Bulking

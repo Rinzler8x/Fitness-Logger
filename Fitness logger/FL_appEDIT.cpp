@@ -104,6 +104,13 @@ public:
 			cout << "_";
 		}
 		cout << "\n" << endl;
+		cout.width(41);
+		cout << "W O R K O U T  L O G S" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "\nEnter workout log to delete: ";
 		cin >> cho;
 		cho--;
@@ -283,6 +290,13 @@ public:
 		{
 			cout << "_";
 		}
+		cout << "\n" << endl;
+		cout.width(46);
+		cout << "F O O D  L O G  E N T R Y" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
 		cout << "\nEnter food log to delete: ";
 		cin >> cho;
 		cho--;
@@ -448,6 +462,13 @@ public:
 			cout << "_";
 		}
 		cout << "\n" << endl;
+		cout.width(43);
+		cout << "F I T N E S S  P L A N" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
 		cout << "Fitness plan deleted" << endl;
 		pl_trainer = '0';
 		pl_gym = '0';
@@ -559,6 +580,13 @@ public:
 
 	void lt_delete()
 	{
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n" << endl;
+		cout.width(49);
+		cout << "L I F E  T I M E  R E C O R D S" << endl;
 		for (int i = 0; i < 120; i++)
 		{
 			cout << "_";
@@ -691,6 +719,13 @@ public:
 		{
 			cout << "_";
 		}
+		cout << "\n" << endl;
+		cout.width(42);
+		cout << "U S E R  E N T R Y" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
 		cout << "\n\n" << endl;
 		cout << "User details are deleted" << endl;
 		ID = 0;
@@ -713,6 +748,7 @@ public:
 		cout << "\n";
 		user_view();
 		pl_view();
+		lt_add();
 		lt_view();
 	}
 
@@ -820,7 +856,7 @@ void pause_fn()
 void pause_wlcm()
 {
 	cout << "\n";
-	cout.width(46);
+	cout.width(55);
 	cout << "Press Enter to continue...";
 	getchar();
 }
@@ -924,19 +960,19 @@ int main()
 	{
 		cout << "\n";
 	}
-	cout << "\n\t\t\t";
+	cout << "\n\t";
 	for (int i = 0; i < 70; i++)
 	{
 		cout << "*";
 		Sleep(7);
 	}
 	cout << "\n" << endl;
-	cout.width(46);
+	cout.width(55);
 	cout << "F I T N E S S  L O G G E R" << endl;
-	cout.width(39);
+	cout.width(49);
 	cout << "W E L C O M E" << endl;
 	cout << "\n";
-	cout << "\n\t\t\t";
+	cout << "\n\t";
 	for (int i = 0; i < 70; i++)
 	{
 		cout << "*";
