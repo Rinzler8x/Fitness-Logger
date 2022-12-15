@@ -13,6 +13,7 @@ using namespace std;
 
 void pause_fn();
 void pause_wlcm();
+void menu_main();
 
 class workout_log
 {
@@ -53,7 +54,7 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "Enter following details: " << endl;
+		cout << "\nEnter following details: " << endl;
 		cout << "Type of excercise: ";
 		cin >> excercise_wl[::count_wl];
 		cout << "No of Steps: ";
@@ -82,7 +83,7 @@ public:
 			cout << "_";
 		}
 		if (::count_wl == 0)
-			cout << "No logs entered" << endl;
+			cout << "\nNo logs entered" << endl;
 		else {
 			for (int i = 0; i < ::count_wl; i++) {
 				cout << "\nExcercise: " << excercise_wl[i] << endl;
@@ -95,34 +96,6 @@ public:
 		}
 	}
 
-	/*void wl_edit()
-	{
-		int cho;
-		for (int i = 0; i < 120; i++)
-		{
-			cout << "_";
-		}
-		cout << "\n" << endl;
-		cout << "Enter workout log to edit: ";
-		cin >> cho;
-		cho--;
-		if (cho < ::count_wl) {
-			cout << "Enter new details for following" << endl;
-			cout << "Type of excercise: ";
-			cin >> excercise_wl[cho];
-			cout << "No of Steps: ";
-			cin >> steps_wl[cho];
-			cout << "Calories burnt: ";
-			cin >> calories_wl[cho];
-			cout << "Distance travelled (in km): ";
-			cin >> distance_wl[cho];
-			cout << "Average heart rate: ";
-			cin >> bpm_wl[cho];
-		}
-		else
-			cout << "Invalid Input" << endl;
-	}*/
-
 	void wl_delete()
 	{
 		int cho;
@@ -131,7 +104,7 @@ public:
 			cout << "_";
 		}
 		cout << "\n" << endl;
-		cout << "Enter workout log to delete: ";
+		cout << "\nEnter workout log to delete: ";
 		cin >> cho;
 		cho--;
 		if (cho < ::count_wl) {
@@ -170,6 +143,53 @@ public:
 		}
 		else
 			cout << "Invalid Input" << endl;
+	}
+
+	void menu_wl(workout_log &U1)
+	{
+		int cho = 0;
+		do {
+			system("cls");
+			cout << "\n";
+			cout.width(74);
+			cout << "W O R K O U T   L O G   M E N U" << endl;
+			cout << "\n";
+			cout << setw(66); cout << "1. Add new workout" << endl;
+			cout << setw(68); cout << "2. View workout logs" << endl;
+			cout << setw(69); cout << "3. Delete workout log" << endl;
+			cout << setw(55); cout << "4. Exit" << endl;
+			cout << "\n";
+			cout << setw(67); cout << "Enter your choice: ";
+			cin >> cho;
+
+			switch (cho)
+			{
+			case 1:
+				wl_entry();
+				pause_fn();
+				break;
+
+			case 2:
+				wl_view();
+				pause_fn();
+				break;
+
+			case 3:
+				wl_delete();
+				pause_fn();
+				break;
+
+			case 4:
+				file_write_wl(U1);
+				menu_main();
+				break;
+
+			default:
+				cout << "Invalid Input" << endl;
+				pause_fn();
+				break;
+			}
+		} while (cho != 0);
 	}
 
 	friend void file_write_wl(workout_log&);
@@ -223,7 +243,7 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "Enter the following details: " << endl;
+		cout << "\nEnter the following details: " << endl;
 		cout << "Type of food (Breakfast / Lunch / Dinner / Others): ";
 		cin >> type_fl[::count_fl];
 		cout << "Amount of Calories: ";
@@ -246,37 +266,15 @@ public:
 			cout << "_";
 		}
 		if (::count_fl == 0)
-			cout << "No logs entered" << endl;
+			cout << "\nNo logs entered" << endl;
 		else {
 			for (int i = 0; i < ::count_fl; i++) {
-				cout << "Type of Food: " << type_fl[i] << endl;
+				cout << "\nType of Food: " << type_fl[i] << endl;
 				cout << "Amount of Calories: " << calories_fl[i] << endl;
 				cout << "\n";
 			}
 		}
 	}
-
-	/*void fl_edit()
-	{
-		int cho;
-		for (int i = 0; i < 120; i++)
-		{
-			cout << "_";
-		}
-		cout << "\n" << endl;
-		cout << "Enter food log to edit: ";
-		cin >> cho;
-		cho--;
-		if (cho < ::count_fl) {
-			cout << "Enter new details for following: " << endl;
-			cout << "Type of food (Breakfast / Lunch / Dinner / Others): ";
-			cin >> type_fl[cho];
-			cout << "Amount of Calories: ";
-			cin >> calories_fl[cho];
-		}
-		else
-			cout << "Invalid Input" << endl;
-	}*/
 
 	void fl_delete()
 	{
@@ -285,8 +283,7 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n" << endl;
-		cout << "Enter food log to delete: ";
+		cout << "\nEnter food log to delete: ";
 		cin >> cho;
 		cho--;
 		if (cho < ::count_fl) {
@@ -309,6 +306,53 @@ public:
 		}
 		else
 			cout << "Invalid Input" << endl;
+	}
+
+	void menu_fl(food_log& U1)
+	{
+		int cho;
+		do {
+			system("cls");
+			cout << "\n";
+			cout.width(72);
+			cout << "F O O D  L O G  M E N U" << endl;
+			cout << "\n";
+			cout << setw(70); cout << "1. Add new food log" << endl;
+			cout << setw(68); cout << "2. View food logs" << endl;
+			cout << setw(69); cout << "3. Delete food log" << endl;
+			cout << setw(58); cout << "4. Exit" << endl;
+			cout << "\n";
+			cout << setw(70); cout << "Enter your choice: ";
+			cin >> cho;
+
+			switch (cho)
+			{
+			case 1:
+				fl_entry();
+				pause_fn();
+				break;
+
+			case 2:
+				fl_view();
+				pause_fn();
+				break;
+
+			case 3:
+				fl_delete();
+				pause_fn();
+				break;
+
+			case 4:
+				file_write_fl(U1);
+				menu_main();
+				break;
+
+			default:
+				cout << "Invalid Input" << endl;
+				pause_fn();
+				break;
+			}
+		} while (cho != 0);
 	}
 
 	friend void file_write_fl(food_log&);
@@ -389,33 +433,13 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n";
+		cout << "\n\n";
 		cout << "Trainer Name: " << pl_trainer << endl;
 		cout << "Gym Name: " << pl_gym << endl;
 		cout << "Fees: " << pl_fees << endl;
 		cout << "Plan Duration: " << pl_duration << endl;
 		cout << "Plan Type: " << pl_type << endl;
 	}
-
-	/*void pl_edit()
-	{
-		for (int i = 0; i < 120; i++)
-		{
-			cout << "_";
-		}
-		cout << "\n" << endl;
-		cout << "Enter new details for following:" << endl;
-		cout << "Trainer Name: ";
-		cin >> pl_trainer;
-		cout << "Gym Name: ";
-		cin >> pl_gym;
-		cout << "Fees: ";
-		cin >> pl_fees;
-		cout << "Plan Duration:	";
-		cin >> pl_duration;
-		cout << "Plan Type: ";
-		cin >> pl_type;
-	}*/
 
 	void pl_delete()
 	{
@@ -430,6 +454,54 @@ public:
 		pl_fees = 0;
 		pl_duration = 0;
 		pl_type = '0';
+	}
+
+	void menu_pl(plan& U1)
+	{
+		int cho;
+
+		do {
+			system("cls");
+			cout << "\n";
+			cout.width(76);
+			cout << "F I T N E S S  P L A N  M E N U" << endl;
+			cout << "\n";
+			cout << setw(69); cout << "1. Add fitness plan" << endl;
+			cout << setw(70); cout << "2. View fitness plan" << endl;
+			cout << setw(72); cout << "3. Delete fitness plan" << endl;
+			cout << setw(57); cout << "4. Exit" << endl;
+			cout << "\n";
+			cout << setw(69); cout << "Enter your choice: ";
+			cin >> cho;
+
+			switch (cho)
+			{
+			case 1:
+				pl_entry();
+				pause_fn();
+				break;
+
+			case 2:
+				pl_view();
+				pause_fn();
+				break;
+
+			case 3:
+				U1.pl_delete();
+				menu_main();
+				break;
+
+			case 4:
+				file_write_pl(U1);
+				menu_main();
+				break;
+
+			default:
+				cout << "Invalid Input" << endl;
+				pause_fn();
+				break;
+			}
+		} while (cho != 0);
 	}
 
 	friend void file_write_pl(plan&);
@@ -479,7 +551,7 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n";
+		cout << "\n\n";
 		cout << "Total Steps: " << steps_lt << endl;
 		cout << "Total Calories: " << calories_lt << endl;
 		cout << "Total Distance Travelled: " << distance_lt << endl;
@@ -491,13 +563,48 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n" << endl;
+		cout << "\n\n" << endl;
 		cout << "Life Time Records are reset" << endl;
 		steps_lt = 0;
 		calories_lt = 0;
 		distance_lt = 0;
 	}
 
+	void menu_lt(lifetime& U1)
+	{
+		int cho;
+
+		do {
+			system("cls");
+			cout << "\n";
+			cout.width(81);
+			cout << "L I F E  T I M E  R E C O R D S  M E N U" << endl;
+			cout << "\n";
+			cout << setw(74); cout << "1. View life time record" << endl;
+			cout << setw(57); cout << "2. Exit" << endl;
+			cout << "\n";
+			cout << setw(69); cout << "Enter your choice: ";
+			cin >> cho;
+
+			switch (cho)
+			{
+			case 1:
+				lt_add();
+				lt_view();
+				pause_fn();
+				break;
+
+			case 2:
+				menu_main();
+				break;
+
+			default:
+				cout << "Invalid Input" << endl;
+				pause_fn();
+				break;
+			}
+		} while (cho != 0);
+	}
 };
 
 class user : public lifetime
@@ -540,7 +647,7 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n";
+		cout << "\n\n";
 		cout << "Enter the following details:" << endl;
 		cout << "Id: ";
 		cin >> ID;
@@ -578,35 +685,13 @@ public:
 		cout << "Blood Group: " << blood_grp << endl;
 	}
 
-	/*void user_edit()
-	{
-		for (int i = 0; i < 120; i++)
-		{
-			cout << "_";
-		}
-		cout << "\n" << endl;
-		cout << "Enter new details to following:" << endl;
-		cout << "Id: ";
-		cin >> ID;
-		cout << "Name: ";
-		cin >> name;
-		cout << "Age: ";
-		cin >> age;
-		cout << "Height: ";
-		cin >> height;
-		cout << "Weight: ";
-		cin >> weight;
-		cout << "Blood group: ";
-		cin >> blood_grp;
-	}*/
-
 	void user_delete()
 	{
 		for (int i = 0; i < 120; i++)
 		{
 			cout << "_";
 		}
-		cout << "\n" << endl;
+		cout << "\n\n" << endl;
 		cout << "User details are deleted" << endl;
 		ID = 0;
 		name = '0';
@@ -616,9 +701,77 @@ public:
 		blood_grp = '0';
 	}
 
+	void user_summary()
+	{
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n";
+		cout.width(73);
+		cout << "A C C O U N T  S U M M A R Y" << endl;
+		for (int i = 0; i < 120; i++)
+		{
+			cout << "_";
+		}
+		cout << "\n";
+		user_view();
+		pl_view();
+		lt_view();
+	}
+
+	void menu_user(user& U1)
+	{
+		int cho;
+
+		do {
+			system("cls");
+			cout << "\n";
+			cout.width(77);
+			cout << "U S E R  D E T A I L S  M E N U" << endl;
+			cout << "\n";
+			cout << setw(69); cout << "1. Add user details" << endl;
+			cout << setw(70); cout << "2. View user details" << endl;
+			cout << setw(72); cout << "3. Delete user details" << endl;
+			cout << setw(57); cout << "4. Exit" << endl;
+			cout << "\n";
+			cout << setw(69); cout << "Enter your choice: ";
+			cin >> cho;
+
+			switch (cho)
+			{
+			case 1:
+				user_entry();
+				pause_fn();
+				break;
+
+			case 2:
+				bmi(U1);
+				user_view();
+				cout << U1;
+				pause_fn();
+				break;
+
+			case 4:
+				user_delete();
+				pause_fn();
+				break;
+
+			case 5:
+				file_write_user(U1);
+				menu_main();
+				break;
+
+			default:
+				cout << "Invalid Input" << endl;
+				pause_fn();
+				break;
+			}
+		} while (cho != 0);
+	}
+
 	friend ostream& operator <<(ostream& output, const user& U);
 	
-
 	friend void bmi(user&);
 
 	friend void file_write_user(user&);
@@ -676,258 +829,6 @@ void pause_wlcm()
 	getchar();
 }
 
-void menu_wl(user& U1)
-{
-	int cho = 0;
-	do {
-		system("cls");
-		cout << "\n";
-		cout.width(74);
-		cout << "W O R K O U T   L O G   M E N U" << endl;
-		cout << "\n";
-		cout << setw(66); cout << "1. Add new workout" << endl;
-		cout << setw(68); cout << "2. View workout logs" << endl;
-		//cout << setw(67); cout << "3. Edit workout log" << endl;
-		cout << setw(69); cout << "4. Delete workout log" << endl;
-		cout << setw(55); cout << "5. Exit" << endl;
-		cout << "\n";
-		cout << setw(67); cout << "Enter your choice: ";
-		cin >> cho;
-
-		switch (cho)
-		{
-		case 1:
-			U1.wl_entry();
-			pause_fn();
-			break;
-
-		case 2:
-			U1.wl_view();
-			pause_fn();
-			break;
-
-		/*case 3:
-			U1.wl_edit();
-			pause_fn();
-			break;*/
-
-		case 4:
-			U1.wl_delete();
-			pause_fn();
-			break;
-
-		case 5:
-			file_write_wl(U1);
-			menu_main();
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			pause_fn();
-			break;
-		}
-	} while (cho != 0);
-}
-
-void menu_fl(user& U1)
-{
-	int cho;
-	do {
-		system("cls");
-		cout << "\n";
-		cout.width(72);
-		cout << "F O O D  L O G  M E N U" << endl;
-		cout << "\n";
-		cout << setw(70); cout << "1. Add new food log" << endl;
-		cout << setw(68); cout << "2. View food logs" << endl;
-		//cout << setw(67); cout << "3. Edit food log" << endl;
-		cout << setw(69); cout << "4. Delete food log" << endl;
-		cout << setw(58); cout << "5. Exit" << endl;
-		cout << "\n";
-		cout << setw(70); cout << "Enter your choice: ";
-		cin >> cho;
-
-		switch (cho)
-		{
-		case 1:
-			U1.fl_entry();
-			pause_fn();
-			break;
-
-		case 2:
-			U1.fl_view();
-			pause_fn();
-			break;
-
-		/*case 3:
-			U1.fl_edit();
-			pause_fn();
-			break;*/
-
-		case 4:
-			U1.fl_delete();
-			pause_fn();
-			break;
-
-		case 5:
-			file_write_fl(U1);
-			menu_main();
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			pause_fn();
-			break;
-		}
-	} while (cho != 0);
-}
-
-void menu_pl(user& U1)
-{
-	int cho;
-
-	do {
-		system("cls");
-		cout << "\n";
-		cout.width(76);
-		cout << "F I T N E S S  P L A N  M E N U" << endl;
-		cout << "\n";
-		cout << setw(69); cout << "1. Add fitness plan" << endl;
-		cout << setw(70); cout << "2. View fitness plan" << endl;
-		//cout << setw(70); cout << "3. Edit fitness plan" << endl;
-		cout << setw(72); cout << "4. Delete fitness plan" << endl;
-		cout << setw(57); cout << "5. Exit" << endl;
-		cout << "\n";
-		cout << setw(69); cout << "Enter your choice: ";
-		cin >> cho;
-
-		switch (cho)
-		{
-		case 1:
-			U1.pl_entry();
-			pause_fn();
-			break;
-
-		case 2:
-			U1.pl_view();
-			pause_fn();
-			break;
-
-		/*case 3:
-			U1.pl_edit();
-			pause_fn();
-			break;*/
-
-		case 4:
-			U1.pl_delete();
-			menu_main();
-			break;
-
-		case 5:
-			file_write_pl(U1);
-			menu_main();
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			pause_fn();
-			break;
-		}
-	} while (cho != 0);
-}
-
-void menu_lt(user& U1)
-{
-	int cho;
-
-	do {
-		system("cls");
-		cout << "\n";
-		cout.width(81);
-		cout << "L I F E  T I M E  R E C O R D S  M E N U" << endl;
-		cout << "\n";
-		cout << setw(74); cout << "1. View life time record" << endl;
-		cout << setw(57); cout << "2. Exit" << endl;
-		cout << "\n";
-		cout << setw(69); cout << "Enter your choice: ";
-		cin >> cho;
-
-		switch (cho)
-		{
-		case 1:
-			U1.lt_add();
-			U1.lt_view();
-			pause_fn();
-			break;
-
-		case 2:
-			menu_main();
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			pause_fn();
-			break;
-		}
-	} while (cho != 0);
-}
-
-void menu_user(user& U1)
-{
-	int cho;
-
-	do {
-		system("cls");
-		cout << "\n";
-		cout.width(77);
-		cout << "U S E R  D E T A I L S  M E N U" << endl;
-		cout << "\n";
-		cout << setw(69); cout << "1. Add user details" << endl;
-		cout << setw(70); cout << "2. View user details" << endl;
-		//cout << setw(70); cout << "3. Edit user details" << endl;
-		cout << setw(72); cout << "4. Delete user details" << endl;
-		cout << setw(57); cout << "5. Exit" << endl;
-		cout << "\n";
-		cout << setw(69); cout << "Enter your choice: ";
-		cin >> cho;
-
-		switch (cho)
-		{
-		case 1:
-			U1.user_entry();
-			pause_fn();
-			break;
-
-		case 2:
-			bmi(U1);
-			U1.user_view();
-			cout << U1;
-			pause_fn();
-			break;
-
-		/*case 3:
-			U1.user_edit();
-			pause_fn();
-			break;*/
-
-		case 4:
-			U1.user_delete();
-			pause_fn();
-			break;
-
-		case 5:
-			file_write_user(U1);
-			menu_main();
-			break;
-
-		default:
-			cout << "Invalid Input" << endl;
-			pause_fn();
-			break;
-		}
-	} while (cho != 0);
-}
-
 void menu_main()
 {
 	system("cls");
@@ -946,8 +847,9 @@ void menu_main()
 	cout << setw(68); cout << "3. Life Time Records" << endl;
 	cout << setw(63); cout << "4. Fitness Plan" << endl;
 	cout << setw(63); cout << "5. User Details" << endl;
-	cout << setw(64); cout << "6. Calculate BMI" << endl;
-	cout << setw(55); cout << "7. Exit" << endl;
+	cout << setw(66); cout << "6. Account Summary" << endl;
+	cout << setw(64); cout << "7. Calculate BMI" << endl;
+	cout << setw(55); cout << "8. Exit" << endl;
 
 	do
 	{
@@ -960,26 +862,31 @@ void menu_main()
 		switch (cho)
 		{
 		case 1:
-			menu_wl(U1);
+			U1.menu_wl(U1);
 			break;
 
 		case 2:
-			menu_fl(U1);
+			U1.menu_fl(U1);
 			break;
 
 		case 3:
-			menu_lt(U1);
+			U1.menu_lt(U1);
 			break;
 
 		case 4:
-			menu_pl(U1);
+			U1.menu_pl(U1);
 			break;
 
 		case 5:
-			menu_user(U1);
+			U1.menu_user(U1);
 			break;
 
 		case 6:
+			U1.user_summary();
+			pause_fn();
+			break;
+
+		case 7:
 			for (int i = 0; i < 120; i++)
 			{
 				cout << "_";
@@ -1001,7 +908,7 @@ void menu_main()
 			menu_main();
 			break;
 
-		case 7:
+		case 8:
 			U1.~user();
 			exit(1);
 			break;
@@ -1021,7 +928,6 @@ int main()
 	{
 		cout << "\n";
 	}
-	/*system("COLOR B7");*/
 	cout << "\n\t\t\t";
 	for (int i = 0; i < 70; i++)
 	{
