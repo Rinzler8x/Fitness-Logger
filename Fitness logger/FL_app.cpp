@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iomanip>
 #include <stdlib.h>
-#include<Windows.h>
+#include <Windows.h>
 using namespace std;
 int count_wl = 0;
 int count_fl = 0;
