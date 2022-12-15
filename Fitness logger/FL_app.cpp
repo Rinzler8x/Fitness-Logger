@@ -707,13 +707,9 @@ public:
 		{
 			cout << "_";
 		}
-		cout << "\n";
+		cout << "\n" << endl;
 		cout.width(73);
 		cout << "A C C O U N T  S U M M A R Y" << endl;
-		for (int i = 0; i < 120; i++)
-		{
-			cout << "_";
-		}
 		cout << "\n";
 		user_view();
 		pl_view();
@@ -752,12 +748,12 @@ public:
 				pause_fn();
 				break;
 
-			case 4:
+			case 3:
 				user_delete();
 				pause_fn();
 				break;
 
-			case 5:
+			case 4:
 				file_write_user(U1);
 				menu_main();
 				break;
