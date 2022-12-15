@@ -95,7 +95,7 @@ public:
 		}
 	}
 
-	void wl_edit()
+	/*void wl_edit()
 	{
 		int cho;
 		for (int i = 0; i < 120; i++)
@@ -121,7 +121,7 @@ public:
 		}
 		else
 			cout << "Invalid Input" << endl;
-	}
+	}*/
 
 	void wl_delete()
 	{
@@ -256,7 +256,7 @@ public:
 		}
 	}
 
-	void fl_edit()
+	/*void fl_edit()
 	{
 		int cho;
 		for (int i = 0; i < 120; i++)
@@ -276,7 +276,7 @@ public:
 		}
 		else
 			cout << "Invalid Input" << endl;
-	}
+	}*/
 
 	void fl_delete()
 	{
@@ -397,7 +397,7 @@ public:
 		cout << "Plan Type: " << pl_type << endl;
 	}
 
-	void pl_edit()
+	/*void pl_edit()
 	{
 		for (int i = 0; i < 120; i++)
 		{
@@ -415,7 +415,7 @@ public:
 		cin >> pl_duration;
 		cout << "Plan Type: ";
 		cin >> pl_type;
-	}
+	}*/
 
 	void pl_delete()
 	{
@@ -578,7 +578,7 @@ public:
 		cout << "Blood Group: " << blood_grp << endl;
 	}
 
-	void user_edit()
+	/*void user_edit()
 	{
 		for (int i = 0; i < 120; i++)
 		{
@@ -598,7 +598,7 @@ public:
 		cin >> weight;
 		cout << "Blood group: ";
 		cin >> blood_grp;
-	}
+	}*/
 
 	void user_delete()
 	{
@@ -687,7 +687,7 @@ void menu_wl(user& U1)
 		cout << "\n";
 		cout << setw(66); cout << "1. Add new workout" << endl;
 		cout << setw(68); cout << "2. View workout logs" << endl;
-		cout << setw(67); cout << "3. Edit workout log" << endl;
+		//cout << setw(67); cout << "3. Edit workout log" << endl;
 		cout << setw(69); cout << "4. Delete workout log" << endl;
 		cout << setw(55); cout << "5. Exit" << endl;
 		cout << "\n";
@@ -706,10 +706,10 @@ void menu_wl(user& U1)
 			pause_fn();
 			break;
 
-		case 3:
+		/*case 3:
 			U1.wl_edit();
 			pause_fn();
-			break;
+			break;*/
 
 		case 4:
 			U1.wl_delete();
@@ -740,7 +740,7 @@ void menu_fl(user& U1)
 		cout << "\n";
 		cout << setw(70); cout << "1. Add new food log" << endl;
 		cout << setw(68); cout << "2. View food logs" << endl;
-		cout << setw(67); cout << "3. Edit food log" << endl;
+		//cout << setw(67); cout << "3. Edit food log" << endl;
 		cout << setw(69); cout << "4. Delete food log" << endl;
 		cout << setw(58); cout << "5. Exit" << endl;
 		cout << "\n";
@@ -759,10 +759,10 @@ void menu_fl(user& U1)
 			pause_fn();
 			break;
 
-		case 3:
+		/*case 3:
 			U1.fl_edit();
 			pause_fn();
-			break;
+			break;*/
 
 		case 4:
 			U1.fl_delete();
@@ -794,7 +794,7 @@ void menu_pl(user& U1)
 		cout << "\n";
 		cout << setw(69); cout << "1. Add fitness plan" << endl;
 		cout << setw(70); cout << "2. View fitness plan" << endl;
-		cout << setw(70); cout << "3. Edit fitness plan" << endl;
+		//cout << setw(70); cout << "3. Edit fitness plan" << endl;
 		cout << setw(72); cout << "4. Delete fitness plan" << endl;
 		cout << setw(57); cout << "5. Exit" << endl;
 		cout << "\n";
@@ -813,10 +813,10 @@ void menu_pl(user& U1)
 			pause_fn();
 			break;
 
-		case 3:
+		/*case 3:
 			U1.pl_edit();
 			pause_fn();
-			break;
+			break;*/
 
 		case 4:
 			U1.pl_delete();
@@ -884,7 +884,7 @@ void menu_user(user& U1)
 		cout << "\n";
 		cout << setw(69); cout << "1. Add user details" << endl;
 		cout << setw(70); cout << "2. View user details" << endl;
-		cout << setw(70); cout << "3. Edit user details" << endl;
+		//cout << setw(70); cout << "3. Edit user details" << endl;
 		cout << setw(72); cout << "4. Delete user details" << endl;
 		cout << setw(57); cout << "5. Exit" << endl;
 		cout << "\n";
@@ -905,10 +905,10 @@ void menu_user(user& U1)
 			pause_fn();
 			break;
 
-		case 3:
+		/*case 3:
 			U1.user_edit();
 			pause_fn();
-			break;
+			break;*/
 
 		case 4:
 			U1.user_delete();
@@ -1021,7 +1021,7 @@ int main()
 	{
 		cout << "\n";
 	}
-	system("COLOR B0");
+	/*system("COLOR B7");*/
 	cout << "\n\t\t\t";
 	for (int i = 0; i < 70; i++)
 	{
