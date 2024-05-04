@@ -1,4 +1,4 @@
-# Fitness logger
+# Fitness Logger
 
 Fitness Logger is your comprehensive fitness companion designed to help you achieve your health and wellness goals effectively. Whether you're a seasoned gym-goer or just starting your fitness journey, Fitness Logger provides the tools and insights you need to stay on track and reach your milestones.
 
